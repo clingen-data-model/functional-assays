@@ -1,150 +1,149 @@
-assessment:
-  id: cd-fdp-ex:ps3-000
-  type: CriterionAssessment
-  description: NM_030662.3(MAP2K2):c.401A>G (p.Tyr134Cys) meets PS3 criterion
-  criterion:
-    id: SEPIO-CG:99025
-    type: VariantPathogenicityInterpretationCriterion
-    label: PS3
-    defaultStrength:
-      id: SEPIO:000000330
-      type: Code
-      label: Pathogenic Strong
-    description: >-
-      well-established in vitro or in vivo functional studies supportive of a
-      damaging effect on the gene or gene product
-  variant:
-    id: CAR:CA180890
-    type: CanonicalAllele
-    label: NM_030662.3(MAP2K2):c.401A>G (p.Tyr134Cys)
-  statementOutcome:
-    id: SEPIO:0000223
+id: cd-fdp-ex:ps3-000
+type: CriterionAssessment
+description: NM_030662.3(MAP2K2):c.401A>G (p.Tyr134Cys) meets PS3 criterion
+criterion:
+  id: SEPIO-CG:99025
+  type: VariantPathogenicityInterpretationCriterion
+  label: PS3
+  defaultStrength:
+    id: SEPIO:000000330
     type: Code
-    label: Met
-  evidenceLine:
-    id: _:EvLn000
-    type: EvidenceLine
-    evidenceItem:
-      id: _:Func000
-      type: AlleleFunctionalImpactStatement
-      resultDescription: p.Tyr134Cys results in gain-of-function (excess ERK phosphorylation)
-      canonicalAllele:
-        id: CAR:CA180890
-      contribution:
-        id: _:Contrib000
-        type: Contribution
-        contributionRole:
-          id: SEPIO:0000154
-          type: Code
-          label: assessor
-        agent:
-          id: CGEX:Agent007
-          type: Agent
-          label: Harry Stevenson
-          contributionDate: 2019-04-23
-        onBehalfOf:
-          id: clingen-vcep:RASopathy
-          type: Agent
-          label: ClinGen RASopathy Expert Panel
-      gene: HGNC:MAP2K2
-      evidenceLine:
-        id: _:EvLn001
-        type: EvidenceLine
-        evidenceItem:
-        - id: _:AFIMS000
-          type: AlleleFunctionalImpactMeasurementStatement
-          description: Increased ERK phosphorylation observed in 293T cells transfected with Tyr134Cys MAP2K2
-          measurement: constitutive ERK phosphorylation # or "present"
-          # units: ???
-          canonicalAllele:
-            id: CAR:CA180890
-          assayInstance:
-            id: _:FAI000
-            type: FunctionalAssayInstance
-            description: ERK phosphorylation assay from PMID:18413255
-            source: PMID:18413255 # (should this be contribution?)
-            experimentalMaterial:
-              id: CLO:0037237
-              type: Code
-              label: 293-derived cell
-            # positiveControls: ???
-            negativeControls: ["empty vector", "wt human MEK1"]
-            assayType:
-              id: _:FAT000
-              type: FunctionalAssayType
-              description: ERK Phosphorylation Assay
-              method:
-                id: BAO:0003005
-                label: phosphorylation assay
-                definition: >-
-                  This assay quantifies the phosphorylation levels of a protein. The phosphorylation status
-                  is detected by one of several methods: using phosphorylation specific antibodies followed
-                  by western blotting or imaging, mass spectrometry, etc.
-          contribution:
-          - id: _:QC000
-            type: Contribution
-            contributionRole:
-              id: SEPIO:xxxxxx
-              type: Code
-              label: publication
-            agent:
-              id: _:Authors000
-              type: Agent
-              label: authors of PMID:18413255
-          - id: _:QC001
-            type: Contribution
-            contributionRole:
-              id: SEPIO:0000156
-              type: Code
-              label: curator
-            agent:
-              id: clingen-people:JaneBiocurator
-              type: Agent
-              label: Jane Biocurator
-            onBehalfOf:
-              id: clingen-vcep:RASopathy
-        - id: _:FAEP000
-          type: FunctionalAssayEvaluatesPathogenicity
-          description: ERK hyperphosphorylation predicts pathogenicity for CFC
-          geneticCondition:
-            id: _:GC000
-            type: GeneticCondition
-            disease: MONDO:0015280
-            gene: HGNC:MAP2K2
-            label: cardiofacialcutaneous syndrome related to MAP2K2
-            inheritancePattern:
-              id: HP:0000006
-              type: Code
-              label: Autosomal dominant inheritance
-            mechanism:
-              - gain of function
-              - constitutive or increased ERK phosphorylation
-              - GO:0004708 (MAP kinase kinase activity)
-          range:
-          - id: _:CR000
-            type: ClassificationRange
-            value: true
-            units: boolean
-            result: gain of function
-          - id: _:CR001
-            type: ClassificationRange
-            value: false
-            units: boolean
-            result: normal
-          range:
-          assayInstance: _:FAI000
-          qualifiedContribution:
-            id: _:VCEPEval000
-            type: Contribution
-            contributionRole:
-              id: SEPIO:000154
-              type: Code
-              label: assessor
-            agent:
-              id: clingen-vcep:RASopathy
-              type: Agent
-              label: ClinGen RASopathy Expert Panel
-            onBehalfOf:
-              id: https://clinicalgenome.org
-              type: Agent
-              label: ClinGen project
+    label: Pathogenic Strong
+  description: >-
+    well-established in vitro or in vivo functional studies supportive of a
+    damaging effect on the gene or gene product
+variant:
+  id: CAR:CA180890
+  type: CanonicalAllele
+  label: NM_030662.3(MAP2K2):c.401A>G (p.Tyr134Cys)
+statementOutcome:
+  id: SEPIO:0000223
+  type: Code
+  label: Met
+evidenceLine:
+  id: _:EvLn000
+  type: EvidenceLine
+  evidenceItem:
+    id: _:Func000
+    type: AlleleFunctionalImpactStatement
+    resultDescription: p.Tyr134Cys results in gain-of-function (excess ERK phosphorylation)
+    canonicalAllele:
+      id: CAR:CA180890
+    contribution:
+      id: _:Contrib000
+      type: Contribution
+      contributionRole:
+        id: SEPIO:0000154
+        type: Code
+        label: assessor
+      agent:
+        id: CGEX:Agent007
+        type: Agent
+        label: Harry Stevenson
+        contributionDate: 2019-04-23
+      onBehalfOf:
+        id: clingen-vcep:RASopathy
+        type: Agent
+        label: ClinGen RASopathy Expert Panel
+    gene: HGNC:MAP2K2
+    evidenceLine:
+      id: _:EvLn001
+      type: EvidenceLine
+      evidenceItem:
+      - id: _:AFIMS000
+        type: AlleleFunctionalImpactMeasurementStatement
+        description: Increased ERK phosphorylation observed in 293T cells transfected with Tyr134Cys MAP2K2
+        measurement: constitutive ERK phosphorylation # or "present"
+        # units: ???
+        canonicalAllele:
+          id: CAR:CA180890
+        assayInstance:
+          id: _:FAI000
+          type: FunctionalAssayInstance
+          description: ERK phosphorylation assay from PMID:18413255
+          source: PMID:18413255 # (should this be contribution?)
+          experimentalMaterial:
+            id: CLO:0037237
+            type: Code
+            label: 293-derived cell
+          # positiveControls: ???
+          negativeControls: ["empty vector", "wt human MEK1"]
+          assayType:
+            id: _:FAT000
+            type: FunctionalAssayType
+            description: ERK Phosphorylation Assay
+            method:
+              id: BAO:0003005
+              label: phosphorylation assay
+              definition: >-
+                This assay quantifies the phosphorylation levels of a protein. The phosphorylation status
+                is detected by one of several methods: using phosphorylation specific antibodies followed
+                by western blotting or imaging, mass spectrometry, etc.
+        contribution:
+        - id: _:QC000
+          type: Contribution
+          contributionRole:
+            id: SEPIO:xxxxxx
+            type: Code
+            label: publication
+          agent:
+            id: _:Authors000
+            type: Agent
+            label: authors of PMID:18413255
+        - id: _:QC001
+          type: Contribution
+          contributionRole:
+            id: SEPIO:0000156
+            type: Code
+            label: curator
+          agent:
+            id: clingen-people:JaneBiocurator
+            type: Agent
+            label: Jane Biocurator
+          onBehalfOf:
+            id: clingen-vcep:RASopathy
+      - id: _:FAEP000
+        type: FunctionalAssayEvaluatesPathogenicity
+        description: ERK hyperphosphorylation predicts pathogenicity for CFC
+        geneticCondition:
+          id: _:GC000
+          type: GeneticCondition
+          disease: MONDO:0015280
+          gene: HGNC:MAP2K2
+          label: cardiofacialcutaneous syndrome related to MAP2K2
+          inheritancePattern:
+            id: HP:0000006
+            type: Code
+            label: Autosomal dominant inheritance
+          mechanism:
+            - gain of function
+            - constitutive or increased ERK phosphorylation
+            - GO:0004708 (MAP kinase kinase activity)
+        range:
+        - id: _:CR000
+          type: ClassificationRange
+          value: true
+          units: boolean
+          result: gain of function
+        - id: _:CR001
+          type: ClassificationRange
+          value: false
+          units: boolean
+          result: normal
+        range:
+        assayInstance: _:FAI000
+        qualifiedContribution:
+          id: _:VCEPEval000
+          type: Contribution
+          contributionRole:
+            id: SEPIO:000154
+            type: Code
+            label: assessor
+          agent:
+            id: clingen-vcep:RASopathy
+            type: Agent
+            label: ClinGen RASopathy Expert Panel
+          onBehalfOf:
+            id: https://clinicalgenome.org
+            type: Agent
+            label: ClinGen project

@@ -151,8 +151,8 @@ def visit_object(n, parent='', parent_label=''):
     all_rows.append(row)
     return row
 
-y = yaml.safe_load(open(sys.argv[1]))
-visit_object(y['assessment'])
+y = yaml.safe_load(sys.stdin)
+visit_object(y)
 
 si = io.StringIO()
 w = csv.DictWriter(si, 'node_id,type,node_label,description,attributes,fill,parent,parent_label'.split(','))

@@ -1,142 +1,141 @@
-assessment:
-  id: cg-fdp-ex:ps3-004
-  type: CriterionAssessment
-  description: NM_000277.3(PAH):c.473G>A (p.Arg158Gln) meets PS3 criterion for PKU
-  criterion:
-    id: SEPIO-CG:99025
-    type: VariantPathogenicityInterpretationCriterion
-    label: PS3
-    description: >-
-      well-established in vitro or in vivo functional studies supportive of a
-      damaging effect on the gene or gene product
-    defaultStrength:
-      id: SEPIO:000000330
-      type: Code
-      label: Pathogenic Strong
-  variant:
-    id: CAR:CA251530
-    type: CanonicalAllele
-    label: NM_000277.3(PAH):c.473G>A (p.Arg158Gln)
-  statementOutcome:
-    id: SEPIO:0000223
+id: cg-fdp-ex:ps3-004
+type: CriterionAssessment
+description: NM_000277.3(PAH):c.473G>A (p.Arg158Gln) meets PS3 criterion for PKU
+criterion:
+  id: SEPIO-CG:99025
+  type: VariantPathogenicityInterpretationCriterion
+  label: PS3
+  description: >-
+    well-established in vitro or in vivo functional studies supportive of a
+    damaging effect on the gene or gene product
+  defaultStrength:
+    id: SEPIO:000000330
     type: Code
-    label: Met
-  evidenceLine:
-    id: _:EvLn000
-    type: EvidenceLine
-    evidenceItem:
-      id: _:Func000
-      type: AlleleFunctionalImpactStatement
-      resultDescription: p.Arg158Gln has negative functional impact on PAH
-      canonicalAllele: CAR:CA251530
-      contribution:
-        id: _:Contrib000
-        type: Contribution
-        contributionRole:
-          id: SEPIO:0000154
-          label: assessor
-        agent:
-          id: CGEX:Agent007
-          type: Agent
-          label: Harry Stevenson
-          contributionDate: 2019-04-23
-        onBehalfOf:
-          id: clingen-vcep:PAH
-          type: Agent
-          label: ClinGen PAH Expert Panel
-      gene: PAH
-      evidenceLine:
-        id: _:EvLn001
-        type: EvidenceLine
-        evidenceItem:
-        - id: _:AFIMS000
-          type: AlleleFunctionalImpactMeasurementStatement
-          description:  p.Arg158Gln has 0.2-1.8% of wildtype PAH activity
-          measurement: 1.8
+    label: Pathogenic Strong
+variant:
+  id: CAR:CA251530
+  type: CanonicalAllele
+  label: NM_000277.3(PAH):c.473G>A (p.Arg158Gln)
+statementOutcome:
+  id: SEPIO:0000223
+  type: Code
+  label: Met
+evidenceLine:
+  id: _:EvLn000
+  type: EvidenceLine
+  evidenceItem:
+    id: _:Func000
+    type: AlleleFunctionalImpactStatement
+    resultDescription: p.Arg158Gln has negative functional impact on PAH
+    canonicalAllele: CAR:CA251530
+    contribution:
+      id: _:Contrib000
+      type: Contribution
+      contributionRole:
+        id: SEPIO:0000154
+        label: assessor
+      agent:
+        id: CGEX:Agent007
+        type: Agent
+        label: Harry Stevenson
+        contributionDate: 2019-04-23
+      onBehalfOf:
+        id: clingen-vcep:PAH
+        type: Agent
+        label: ClinGen PAH Expert Panel
+    gene: PAH
+    evidenceLine:
+      id: _:EvLn001
+      type: EvidenceLine
+      evidenceItem:
+      - id: _:AFIMS000
+        type: AlleleFunctionalImpactMeasurementStatement
+        description:  p.Arg158Gln has 0.2-1.8% of wildtype PAH activity
+        measurement: 1.8
+        units: percentage
+        canonicalAllele:
+          id: CAR:CA251530
+        assayInstance:
+          id: _:FAI000
+          type: FunctionalAssayInstance
+          description: PAH enzymatic assay from PMID:19036622
+          source: PMID:19036622 # (should this be contribution?)
+          assayType:
+            id: _:FAT000
+            type: FunctionalAssayType
+            description: Enzymatic assay
+            method:
+              id: BAO:0000124
+              type: Code
+              label: enzyme activity measurement method
+              description: >-
+                It describes the different methods by which an enzyme activity
+                can be measured and the ways it is expressed. This can be measured
+                either directly or coupled to a secondary signal.
+          negativeControls: "wt human PAH"
+        contribution:
+        - id: _:QC000
+          type: Contribution
+          role:
+            id: SEPIO:xxxxxx
+            type: Code
+            label: publication
+          agent:
+            id: _:Authors000
+            label: Authors of PMID:19036622
+        - id: _:QC001
+          type: Contribution
+          role:
+            id: SEPIO:0000156
+            type: Code
+            label: curator
+          agent:
+            id: clingen-people:JaneBiocurator
+            type: Agent
+            label: Jane Biocurator
+          onBehalfOf:
+            id: clingen-vcep:PAH
+      - id: _:FAEP000
+        type: FunctionalAssayEvaluatesPathogenicity
+        description: Reduced PAH activity level indicates pathogenicity for PKU
+        geneticCondition:
+          id: _:GC000
+          type: GeneticCondition
+          disease: MONDO:0009861
+          gene: HGNC:PAH
+          label: Phenylketonuria
+          inheritancePattern:
+            id: HP:0000007
+            type: Code
+            label: Autosomal recessive inheritance
+          # mechanism could benefit from additional modeling
+          mechanism:
+          - loss of function
+          - GO:0004505 (Phenylalanine 4-monooygenase activity)
+        range:
+        - id: _:CR000
+          type: ClassificationRange
+          lower: 0
+          upper: 50
           units: percentage
-          canonicalAllele:
-            id: CAR:CA251530
-          assayInstance:
-            id: _:FAI000
-            type: FunctionalAssayInstance
-            description: PAH enzymatic assay from PMID:19036622
-            source: PMID:19036622 # (should this be contribution?)
-            assayType:
-              id: _:FAT000
-              type: FunctionalAssayType
-              description: Enzymatic assay
-              method:
-                id: BAO:0000124
-                type: Code
-                label: enzyme activity measurement method
-                description: >-
-                  It describes the different methods by which an enzyme activity
-                  can be measured and the ways it is expressed. This can be measured
-                  either directly or coupled to a secondary signal.
-            negativeControls: "wt human PAH"
-          contribution:
-          - id: _:QC000
-            type: Contribution
-            role:
-              id: SEPIO:xxxxxx
-              type: Code
-              label: publication
-            agent:
-              id: _:Authors000
-              label: Authors of PMID:19036622
-          - id: _:QC001
-            type: Contribution
-            role:
-              id: SEPIO:0000156
-              type: Code
-              label: curator
-            agent:
-              id: clingen-people:JaneBiocurator
-              type: Agent
-              label: Jane Biocurator
-            onBehalfOf:
-              id: clingen-vcep:PAH
-        - id: _:FAEP000
-          type: FunctionalAssayEvaluatesPathogenicity
-          description: Reduced PAH activity level indicates pathogenicity for PKU
-          geneticCondition:
-            id: _:GC000
-            type: GeneticCondition
-            disease: MONDO:0009861
-            gene: HGNC:PAH
-            label: Phenylketonuria
-            inheritancePattern:
-              id: HP:0000007
-              type: Code
-              label: Autosomal recessive inheritance
-            # mechanism could benefit from additional modeling
-            mechanism:
-            - loss of function
-            - GO:0004505 (Phenylalanine 4-monooygenase activity)
-          range:
-          - id: _:CR000
-            type: ClassificationRange
-            lower: 0
-            upper: 50
-            units: percentage
-            upperInclusive: false
-            result: loss of function
-          - id: _:CR001
-            type: ClassificationRange
-            lower: 50
-            upper: 100
-            units: percentage
-            result: normal
-          assayInstance: _:FAI000
-          qualifiedContribution:
-            id: _:VCEPEval000
-            type: Contribution
-            contributionRole:
-              id: SEPIO:000154
-              type: ContributionRole
-              label: assessor
-            agent:
-              id: clingen-vcep:PAH
-              type: Agent
-              label: ClinGen PAH Expert Panel
-            onBehalfOf: https://clinicalgenome.org
+          upperInclusive: false
+          result: loss of function
+        - id: _:CR001
+          type: ClassificationRange
+          lower: 50
+          upper: 100
+          units: percentage
+          result: normal
+        assayInstance: _:FAI000
+        qualifiedContribution:
+          id: _:VCEPEval000
+          type: Contribution
+          contributionRole:
+            id: SEPIO:000154
+            type: ContributionRole
+            label: assessor
+          agent:
+            id: clingen-vcep:PAH
+            type: Agent
+            label: ClinGen PAH Expert Panel
+          onBehalfOf: https://clinicalgenome.org
