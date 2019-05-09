@@ -1,0 +1,105 @@
+assessment: # note: the fact that this goes as "supporting" would be at the evidence line above this
+  id: cg-fdp-ex:ps3-003
+  type: CriterionAssessment
+  description: NM_000314.4(PTEN):c.44G>A (p.Arg15Lys) meets PS3 criterion at supporting level of evidence
+  criterion:
+    id: SEPIO-CG:99025
+    type: VariantPathogenicityInterpretationCriterion
+    label: PS3
+    description: well-established in vitro or in vivo functional studies supportive of a damaging effect on the gene or gene product
+    defaultStrength:
+      id: SEPIO:000000330
+      type: Code
+      label: Pathogenic Strong
+  variant:
+    id: CAR:CA16613142
+    type: CanonicalAllele
+    label: NM_000314.4(PTEN):c.44G>A (p.Arg15Lys)
+  statementOutcome:
+    id: SEPIO:0000223
+    type: Code
+    label: Met
+  evidenceLine:
+    id: _:EvLn000
+    type: EvidenceLine
+    evidenceItem:
+      id: _:Func000
+      type: AlleleFunctionalImpactStatement
+      resultDescription: p.Arg15Lys reduces PTEN gene product function
+      canonicalAllele:
+        id: CAR:CA16613142
+      gene:
+        id: HGNC:PTEN
+        type: Gene
+        label: Phosphatase and tensin homolog
+      evidenceLine:
+        id: _:EvLn001
+        type: EvidenceLine
+        evidenceItem:
+        - id: _:FAEP000
+          type: FunctionalAssayEvaluatesPathogenicity
+          description: Abnormal PTEN localization predicts pathogenicity for PHTS with evidence level supporting
+          assayInstance:
+            id: _:FAI000
+            type: FunctionalAssayInstance
+            description: PTEN localization assay from PMID:25875300
+            source: PMID:25875300 # (should this be contribution)
+            experimentalMaterial:
+              id: CLO:0002597
+              label: COS-7 cell
+            negativeControls: ["wt human PTEN"]
+            replicates: 100
+            assayType:
+              id: _:FAT000
+              type: FunctionalAssayType
+              description: PTEN protein localization assay
+              method:
+                id: BAO:0002196
+                label: Protein localization assay
+          geneticCondition:
+            id: _GC:000
+            type: GeneticCondition
+            disease: MONDO:0017623
+            gene:
+              id: HGNC:PTEN
+            label: PTEN hamartoma tumor syndrome
+            inheritancePattern:
+              id: HP:0000006
+              type: Code
+              label: Autosomal dominant inheritance
+            mechanism:
+            - GO:0046856 (Phosphatidylinositol dephosphorylation)
+            - GO:0005643 (Localization in nucleus)
+            - GO:0030336 (Negative regulation of cell migration)
+            - GO:0042127 (Regulation of cell proliferation)
+          qualifiedContribution:
+            id: _:VCEPEval000
+            type: Contribution
+            contributionRole:
+              id: SEPIO:000154
+              type: ContributionRole
+              label: assessor
+            agent:
+              id: clingen-vcep:PTEN
+              type: Agent
+              label: ClinGen PTEN Expert Panel
+            onBehalfOf: https://clinicalgenome.org
+        - id: _:AFIMS000
+          type: AlleleFunctionalImpactMeasurementStatement
+          description: p.Arg15Lys alters PTEN protein localization in COS7 cells
+          measurement: abnormal
+          # units: ???
+          canonicalAllele:
+            id: CAR:CA16613142
+          assayInstance:
+            id: _:FAI000
+          contribution:
+          - id: _:QC000
+            type: Contribution
+            role: Publication
+            agent: PMID:25875300
+          - id: _:QC001
+            type: Contribution
+            role: Curator
+            agent: clingen-people:JaneBiocurator
+            onBehalfOf: clingen-vcep:RASopathy

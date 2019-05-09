@@ -1,0 +1,115 @@
+assessment:
+  id: cg-fdp-ex:ps3-002
+  type: CriterionAssessment
+  description: NM_000277.2(PAH):c.472C>T (p.Arg158Trp) meets PS3 criterion for PKU
+  criterion:
+    id: SEPIO-CG:99025
+    type: VariantPathogenicityInterpretationCriterion
+    label: PS3
+    description: >
+      well-established in vitro or in vivo functional studies supportive of a
+      damaging effect on the gene or gene product
+    defaultStrength:
+      id: SEPIO:000000330
+      label: Pathogenic Strong
+  variant:
+    id: CAR:CA229570
+    type: CanonicalAllele
+    label: NM_000277.2(PAH):c.472C>T (p.Arg158Trp)
+  statementOutcome:
+    id: SEPIO:0000223
+    label: Met
+  evidenceLine:
+    id: _:EvLn000
+    type: EvidenceLine
+    evidenceItem:
+      id: _:Func000
+      type: AlleleFunctionalImpactStatement
+      resultDescription: p.Arg158Trp has negative functional impact on PAH
+      canonicalAllele: CAR:CA229570
+      contribution:
+        id: _:Contrib000
+        type: Contribution
+        contributionRole:
+          id: SEPIO:0000154
+          label: assessor
+        agent:
+          id: CGEX:Agent007
+          type: Agent
+          label: Harry Stevenson
+          contributionDate: 2019-04-23
+        onBehalfOf: clingen-vcep:RASopathy
+      gene: PAH
+      evicenceLine:
+        id: _:EvLn001
+        evidenceItem:
+        - id: _:AFIMS000
+          type: AlleleFunctionalImpactMeasurementStatement
+          description:  p.Arg158Trp has 2% of wildtype PAH activity
+          measurement: 2
+          units: percentage
+          canonicalAllele: CAR:CA229570
+          assayInstance:
+            id: _:FAI000
+            type: FunctionalAssayInstance
+            description: PAH enzymatic assay
+            source: http://www.biopku.org/pah/result-details-pah.asp?ID=101 # (should this be contribution)
+            assayType:
+              id: _:FAT000
+              type: FunctionalAssayType
+              description: Enzymatic assay
+              method: ???
+          contribution:
+          - id: _:QC000
+            role:
+              id: SEPIO:xxxxxx
+              label: publication
+            agent:
+              id: http://www.biopku.org/pah/result-details-pah.asp?ID=101
+              label: BioPKU variant 101
+          - id: _:QC001
+            role: Curator
+            agent: clingen-people:JaneBiocurator
+            onBehalfOf: clingen-vcep:PAH
+        - id: _:FAEP000
+          type: FunctionalAssayEvaluatesPathogenicity
+          description: Reduced PAH activity level indicates pathogenicity for PKU
+          geneticCondition:
+            type: GeneticCondition
+            disease: MONDO:0009861
+            gene: HGNC:PAH
+            label: Phenylketonuria
+            inheritancePattern:
+              id: HP:0000007
+              label: Autosomal recessive inheritance
+            # mechanism could benefit from additional modeling
+            mechanism:
+            - loss of function
+            - GO:0004505 (Phenylalanine 4-monooygenase activity)
+          range:
+          - id: _:CR000
+            type: ClassificationRange
+            lower: 0
+            upper: 50
+            units: percentage
+            upperInclusive: false
+            result: loss of function
+          - id: _:CR001
+            type: ClassificationRange
+            lower: 50
+            upper: 100
+            units: percentage
+            result: normal
+          assayInstance: _:FAI000
+          qualifiedContribution:
+            id: _:VCEPEval000
+            type: Contribution
+            contributionRole:
+              id: SEPIO:000154
+              type: ContributionRole
+              label: assessor
+            agent:
+              id: clingen-vcep:PAH
+              type: Agent
+              label: ClinGen PAH Expert Panel
+            onBehalfOf: https://clinicalgenome.org
