@@ -126,7 +126,8 @@ evidenceLine:
           upper: 100
           units: percentage
           result: normal
-        assayInstance: _:FAI000
+        assayInstance:
+          id: _:FAI000
         qualifiedContribution:
           id: _:VCEPEval000
           type: Contribution
@@ -138,4 +139,7 @@ evidenceLine:
             id: clingen-vcep:PAH
             type: Agent
             label: ClinGen PAH Expert Panel
-          onBehalfOf: https://clinicalgenome.org
+          onBehalfOf:
+            id: https://clinicalgenome.org
+            type: Agent
+            label: ClinGen project
