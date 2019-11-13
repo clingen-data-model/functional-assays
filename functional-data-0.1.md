@@ -40,6 +40,7 @@ skinparam object {
     backgroundColor<<assertion method>> Lavender
     backgroundColor<<statement>> LightSkyBlue
     backgroundColor<<assertion>> LightSkyBlue
+    FontSize 24
 }
 
 /'
@@ -84,7 +85,7 @@ object AlleleFunctionalImpactStatement <<statement>> {
 
 object EvidenceLine003 <<evidence line>>
 
-object AlleleFunctionalImpactMeasurementStatement <<statement >> {
+object AlleleFunctionalImpactMeasurementStatement <<statement>> {
     //(this is a quantitative measurement, or otherwise the "raw" value of a measurement)//
     measurement: 40 //float//
     units: percentActivity //codeable concept//
