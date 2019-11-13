@@ -1,0 +1,105 @@
+@startuml
+
+skinparam object {
+    backgroundColor<<evidence line>> Khaki
+    backgroundColor<<contribution>> Khaki
+    backgroundColor<<assertion method>> Lavender
+    backgroundColor<<statement>> LightSkyBlue
+    backgroundColor<<assertion>> LightSkyBlue
+    StereotypeFontSize 24
+    FontSize 18
+}
+
+object EvidenceLine001 <<evidence line>>
+
+object VariantPathogenicityCriterion <<assertion method>> {
+    ACMG Guidelines 2015 PS3
+}
+
+object CriterionAssessment <<assertion>> <<statement>> {
+    PS3
+}
+
+object AlleleFunctionalImpactStatement <<statement>> {
+    //(this is a qualitative/categorical description)//
+    resultDescription: inactivating //codeable concept//
+    canonicalAllele: ca:CA001122 //iri//
+}
+
+object EvidenceLine002 <<evidence line>>
+
+object AlleleFunctionalImpactMeasurementStatement <<statement>> {
+    //(this is a quantitative measurement, or otherwise the "raw" value of a measurement)//
+    measurement: 40 //float//
+    units: percentActivity //codeable concept//
+    canonicalAllele: ca:CA001122 //iri//
+}
+object FunctionalAssayEvaluatesPathogenicity <<assertion>> <<statement>> {
+    FH VCEP-approved //LDLR// luciferase assay
+    requirements: # of controls, replicates, experimentalMaterial, ... //rule//
+    geneticCondition: Familial Hypercholesterolemia
+}
+
+object FunctionalAssayInstance001 <<FunctionalAssayInstance>> <<domain entity>> {
+    //LDLR// luciferase assay
+    source: PMID:250945 //iri//
+    experimentalMaterial: Hep G2 cells //codeable concept//
+    positiveControls: [CA266664, CA89997, CA57773] //list of iri//
+    negativeControls: []
+}
+
+FunctionalAssayEvaluatesPathogenicity --> "0..m" FunctionalAssayInstance001
+
+AlleleFunctionalImpactMeasurementStatement --> "0..m" FunctionalAssayInstance001
+
+object FunctionalAssayType001 <<FunctionalAssayType>> <<domain entity>> {
+    method: cellularLuciferaseAssay //codeable concept//
+    source: PMID:11223
+}
+
+FunctionalAssayInstance001 --> "0..1" FunctionalAssayType001 : isA
+
+object ClassificationRange <<ClassificationRange>> <<domain entity>> {
+    lower: 0
+    upper: 0.8
+    upperInclusive: false
+    result: inactivating
+}
+
+CriterionAssessment -left-> "0..1" VariantPathogenicityCriterion : isSpecifiedBy
+CriterionAssessment --> "0..m" EvidenceLine001 : hasEvidenceLine
+
+EvidenceLine001 --> "0..m" AlleleFunctionalImpactStatement : hasEvidenceItem
+EvidenceLine002 --> "0..m" FunctionalAssayEvaluatesPathogenicity : hasEvidenceItem
+
+AlleleFunctionalImpactStatement --> "0..m" EvidenceLine002 : hasEvidence
+EvidenceLine002 --> "0..m" AlleleFunctionalImpactMeasurementStatement : hasEvidenceItem
+
+FunctionalAssayEvaluatesPathogenicity --> "0..m" ClassificationRange : hasRange
+
+' contributions
+
+object Contribution003 <<contribution>> {
+    role: ExpertPanel //codeable concept//
+    agent: clingen-vcep:FamilialHypercholesterolemia //iri//
+    on_behalf_of: clinicalgenome.org //iri//
+}
+
+AlleleFunctionalImpactStatement -right-> "0..m" Contribution003 : qualifiedContribution
+
+object Contribution004 <<contribution>> {
+    role: Publication //codeable concept//
+    agent: PMID:250945 //iri//
+}
+
+AlleleFunctionalImpactMeasurementStatement --> "0..m" Contribution004 : qualifiedContribution
+
+object Contribution005 <<contribution>> {
+    role: ExpertPanel //codeable concept//
+    agent: clingen-vcep:FamilialHypercholesterolemia //iri//
+    on_behalf_of: clinicalgenome.org //iri//
+}
+
+FunctionalAssayEvaluatesPathogenicity --> "0..m" Contribution005 : qualifiedContribution
+
+@enduml
